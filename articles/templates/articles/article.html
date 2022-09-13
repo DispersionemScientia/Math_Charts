@@ -1,0 +1,15 @@
+{% extends "math_chart/base.html" %}
+
+{% block page_header %}
+<div class="jumbotron">
+    <h1 class="display-3">{{ article.name }}</h1>
+
+</div>
+{% endblock page_header %}
+
+{% block content %}
+<ul> {{ article.text|linebreaks }}</ul>
+<ul>Дата публикации: {{ article.date_added|date:'M d, Y H:i' }}</ul>
+<a href="{% url 'articles:edit_article' article.id %}">Редактировать</a>
+
+{% endblock content %}

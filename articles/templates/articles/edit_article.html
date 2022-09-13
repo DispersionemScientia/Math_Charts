@@ -1,0 +1,17 @@
+{% extends "math_chart/base.html" %}
+{% load crispy_forms_tags %}
+
+{% block page_header %}
+<div class="jumbotron">
+    <h1 class="display-3">Редактировать статью</h1>
+    <a class="nav-link active" aria-current="page" href="{% url 'articles:topic' topic.id %}">&laquo Назад</a>
+</div>
+{% endblock page_header %}
+
+{% block content %}
+<form method="post" action="{% url 'articles:edit_article' article.id %}">
+    {% csrf_token %}
+    <p>{{ form|crispy }}</p>
+    <button class="btn btn-outline-danger" name='submit class btn btn-primary btn-block'>Сохранить изменения</button>
+</form>
+{% endblock content %}

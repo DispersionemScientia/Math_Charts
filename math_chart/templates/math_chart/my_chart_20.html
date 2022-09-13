@@ -1,0 +1,26 @@
+{% extends 'math_chart/base.html' %}
+{% load crispy_forms_tags %}
+
+{% block page_header %}
+<div class="jumbotron">
+    <h1 class="display-3">Построение графика онлайн по 20-и точкам</h1>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+</div>
+{% endblock page_header %}
+
+
+{% block content %}
+
+<p>Введите координаты точек:</p>
+<form action="{% url 'math_chart:my_chart_20' %}" method="post">
+    <div class="col-sm-4">
+        {% csrf_token %}
+        {{ form|crispy }}
+    </div>
+    <button class="btn btn-outline-danger" name='submit class btn btn-primary btn-block'>Построить график</button>
+</form>
+
+
+
+<div class="col-md-12">{{ plot_div|safe }}</div>
+{% endblock content %}

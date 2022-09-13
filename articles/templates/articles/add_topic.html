@@ -1,0 +1,19 @@
+{% extends "math_chart/base.html" %}
+{% load crispy_forms_tags %}
+
+{% block page_header %}
+<div class="jumbotron">
+    <h1 class="display-3">Добавить новую тему</h1>
+    <a class="nav-link active" aria-current="page" href="{% url 'articles:topics' %}">&laquo Назад</a>
+</div>
+{% endblock page_header %}
+
+{% block content %}
+
+<form action="{% url 'articles:add_topic' %}" method="post">
+    {% csrf_token %}
+    <p>{{ form|crispy }}</p>
+    <button class="btn btn-outline-danger" name='submit class btn btn-primary btn-block'>Добавить тему</button>
+</form>
+
+{% endblock content %}

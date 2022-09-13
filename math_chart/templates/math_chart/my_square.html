@@ -1,0 +1,29 @@
+{% extends 'math_chart/base.html' %}
+
+{% block page_header %}
+<div class="jumbotron">
+    <h1 class="display-3">Построение графика квадратного уравнения по коэффициентам a, b, c</h1>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+</div>
+{% endblock page_header %}
+
+{% block content %}
+
+<p> Квадратное уравнение имеет вид : y = a*x<sup>2</sup>+b*x +c</p>
+<p> Введите следующие коэффициенты для построения графика:</p>
+
+
+<form action="{% url 'math_chart:my_square' %}" method="post">
+    {% csrf_token %}
+    {{ form.as_table }}
+    <button class="btn btn-outline-danger" name='submit class btn btn-primary btn-block'>Построить график</button>
+</form>
+
+
+<div>
+    <p> Вершина параболы находится в точке с координатами:</p>
+    <p> По оси x: {{ h }}</p>
+    <p> По оси y: {{ k }}</p>
+</div>
+<div class="col-md-10">{{ plot_div|safe }}</div>
+{% endblock content %}

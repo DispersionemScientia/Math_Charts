@@ -1,0 +1,86 @@
+{% load bootstrap5 %}
+{% load crispy_forms_tags %}
+
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Math_Charts</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
+
+  {% bootstrap_css %}
+
+</head>
+<body>
+<header>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light mb-4 border">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="{% url 'math_chart:home' %}">
+        <img src="https://img2.freepng.ru/20181125/gr/kisspng-pi-computer-icons-mathematical-constant-mathematic-pi-pi-svg-png-icon-free-download-427596-onlin-5bfae2da335358.7973570315431687302102.jpg" alt="" width="30" height="24" class="d-inline-block align-text-top">
+        MathCharts
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Переключатель навигации">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="{% url 'articles:topics' %}">Статьи</a>
+          </li>
+          <div class="btn-group">
+            <button type="button" class="btn btn-danger dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+              Построить график онлайн
+            </button>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="{% url 'math_chart:trigonometry' %}">Тригонометрические функции</a></li>
+              <li><a class="dropdown-item" href="{% url 'math_chart:my_chart_10' %}">График по 10-и точкам</a></li>
+              <li><a class="dropdown-item" href="{% url 'math_chart:my_chart_20' %}">График по 20-и точкам</a></li>
+              <li><a class="dropdown-item" href="{% url 'math_chart:my_square' %}">График квадратнго уравнения</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item" href="{% url 'math_chart:b6_b6' %}">Броски кубика</a></li>
+            </ul>
+          </div>
+        </ul>
+        <ul class="navbar-nav ml-auto">
+          {% if user.is_authenticated %}
+          <li class="nav-item">
+            <span class="navbar-text">Здравствуйте, {{ user.username }}.</span>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'users:logout' %}">Выйти
+              <img src="https://pic.onlinewebfonts.com/svg/img_522832.png" alt="" width="30" height="24" class="d-inline-block align-text-top">
+            </a>
+          </li>
+          {% else %}
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'users:register' %}">Регистрация
+              <img src="https://pic.onlinewebfonts.com/svg/img_377091.png" alt="" width="30" height="24" class="d-inline-block align-text-top">
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'users:login' %}">Вход
+              <img src="https://pic.onlinewebfonts.com/svg/img_328.png" alt="" width="30" height="24" class="d-inline-block align-text-top">
+            </a>
+          </li>
+          {% endif %}
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
+
+
+<main role="main" class="container">
+  <div class="pb-2 mb-2 border-bottom">
+    {% block page_header %}{% endblock page_header %}
+  </div>
+  <div>
+    {% block content %}{% endblock content %}
+  </div>
+</main>
+
+
+</body>
+</html>

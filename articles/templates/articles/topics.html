@@ -1,0 +1,26 @@
+{% extends "math_chart/base.html" %}
+
+{% block page_header %}
+<div class="jumbotron">
+    <h1 class="display-3">Список тем</h1>
+</div>
+{% endblock page_header %}
+
+{% block content %}
+<p><a class="btn btn-lg btn-primary" href="{% url 'articles:add_topic' %}" role="button">Добавить новую тему</a></p>
+
+{% for topic in topics %}
+<div class="card">
+  <div class="card-header">
+    <p>Дата публикации: {{ topic.date_added|date:'M d, Y H:i' }}</p>
+  </div>
+  <div class="card-body">
+    <h5 class="card-title">Тема: {{ topic }}</h5>
+    <a href="{% url 'articles:topic' topic.id %}" class="btn btn-primary">Перейти</a>
+  </div>
+</div>
+{% empty %}
+    <li>Ни одной темы еще не было добавлено!</li>
+{% endfor %}
+
+{% endblock content %}

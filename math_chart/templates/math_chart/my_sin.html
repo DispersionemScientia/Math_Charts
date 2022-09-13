@@ -1,0 +1,38 @@
+{% extends 'math_chart/base.html' %}
+
+{% block page_header %}
+<div class="jumbotron">
+    <h1 class="display-3">Построение графика тригонометрической функции y(x) = sin(x)</h1>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+</div>
+{% endblock page_header %}
+
+{% block content %}
+<section>
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-sm-12">
+                <p> Уравнение имеет следующий вид: y(x) = a*sin(b*x+c)+d</p>
+                <p> Введите следующие коэффициенты для построения графика:</p>
+                <form action="{% url 'math_chart:my_sin' %}" method="post">
+                    {% csrf_token %}
+                    <p>{{ form.as_table }}</p>
+                    <p>
+                        <button class="btn btn-outline-danger" name='submit class btn btn-primary btn-block'>Построить график</button>
+                    </p>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+<section>
+    <div class="container">
+        <div class="row align-items-center">
+            </div>
+            <div class="col-sm-12">
+                {{ plot_div|safe }}
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock content %}

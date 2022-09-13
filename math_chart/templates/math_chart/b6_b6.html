@@ -1,0 +1,16 @@
+{% extends 'math_chart/base.html' %}
+
+{% block page_header %}
+<div class="jumbotron">
+    <h1 class="display-3">Гистограмма 1000 бросков двух кубиков</h1>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+</div>
+{% endblock page_header %}
+
+{% block content %}
+<div class="col-md-12">{{ plot_div|safe }}</div>
+<div class="jumbotron">
+    <h1 class="display-3">Результат в виде круговой диаграммы</h1>
+</div>
+<div class="col-md-12">{{ plot_d|safe }}</div>
+{% endblock content %}

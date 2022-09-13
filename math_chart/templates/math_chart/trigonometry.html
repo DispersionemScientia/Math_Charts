@@ -1,0 +1,62 @@
+{% extends 'math_chart/base.html' %}
+
+{% block page_header %}
+<div class="jumbotron">
+    <h1 class="display-3">Тригонометрические функции</h1>
+</div>
+{% endblock page_header %}
+
+{% block content %}
+
+<section>
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-sm-8">
+                <p align="justify">Тригонометрические фу́нкции — математические функции от угла. Они безусловно важны при изучении геометрии, а также при исследовании периодических процессов. Обычно тригонометрические функции определяют как отношения сторон прямоугольного треугольника или длины определённых отрезков в единичной окружности. Более современные определения выражают тригонометрические функции через суммы рядов или как решения некоторых дифференциальных уравнений, что позволяет расширить область определения этих функций на произвольные вещественные числа и даже на комплексные числа.</p>
+                <div id="carouselExampleControls" class="carousel carousel-dark slide" data-bs-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <div class="card text-center w-100">
+                                <div class="card-body">
+                                    <h5 class="card-title">Косинус</h5>
+                                    <p class="card-text">Ко́синус угла — отношение прилежащего катета к гипотенузе.</p>
+                                    <a href="{% url 'math_chart:my_cos' %}" class="btn btn-primary">Построить график онлайн</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="card text-center w-100">
+                                <div class="card-body">
+                                    <h5 class="card-title">Синус</h5>
+                                    <p class="card-text">Си́нус угла — отношение противолежащего катета к гипотенузе.</p>
+                                    <a href="{% url 'math_chart:my_sin' %}" class="btn btn-primary">Построить график онлайн</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="card text-center w-100">
+                                <div class="card-body">
+                                    <h5 class="card-title">Тангенс</h5>
+                                    <p class="card-text">Та́нгенс угла — отношение противолежащего катета к прилежащему. Кота́нгенс угла — отношение прилежащего катета к противолежащему.</p>
+                                    <a href="{% url 'math_chart:my_tan' %}" class="btn btn-primary">Построить график онлайн</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Предыдущий</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Следующий</span>
+                    </button>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <img class="w-100" src="https://upload.wikimedia.org/wikipedia/commons/b/bc/Trigonometric_functions_no_legend.svg" alt="Тригонометрия">
+            </div>
+        </div>
+</section>
+
+{% endblock content%}

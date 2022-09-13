@@ -1,0 +1,19 @@
+{% extends "math_chart/base.html" %}
+{% load crispy_forms_tags %}
+
+{% block page_header %}
+<div class="jumbotron">
+    <h1 class="display-3">Добавить новую статью</h1>
+</div>
+{% endblock page_header %}
+
+{% block content %}
+<p>Добавить новую статью</p>
+
+<form action="{% url 'articles:add_article' %}" method="post">
+    {% csrf_token %}
+    <p>{{ form|crispy }}</p>
+    <button class="btn btn-outline-danger" name='submit class btn btn-primary btn-block'>Добавить статью</button>
+</form>
+
+{% endblock content %}
