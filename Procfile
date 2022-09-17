@@ -1,0 +1,1 @@
+web: gunicorn Math_Charts.wsgi --log-file -
