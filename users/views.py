@@ -8,6 +8,6 @@ def register(request):
         form = UserCreationForm(data=request.POST)
         if form.is_valid():
             form.save()
-            return redirect('math_chart/home.html')
+            return redirect('/users/login/')
     context = {'form': form}
     return render(request, 'registration/register.html', context)
